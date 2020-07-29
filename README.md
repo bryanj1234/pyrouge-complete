@@ -4,8 +4,11 @@ It combines two previous repositories:
 * The ROUGE-1.5.5 repo from [here](https://github.com/andersjo/pyrouge.git), and
 * The pyrouge repo from [here](https://github.com/bheinzerling/pyrouge.git)
 
-The installation instructions were taken from
+The installation instructions were basically taken from
 [here](https://medium.com/@sagor_sarker/how-to-install-rouge-pyrouge-in-ubuntu-16-04-7f0ec1cda81b).
+
+Note: The https://pypi.org/project/py-rouge/ package is outdated,
+    so **don't** try to install pyrouge it by running `"pip install pyrouge"`.
 
 ## Installation on Debian-based linux
 
@@ -35,7 +38,6 @@ The installation instructions were taken from
 1. Install pyrouge
 
         cd $ROUGE_BASE/../../../pyrouge_python/
-        mkdir bin
         python setup.py install
         pyrouge_set_rouge_path $ROUGE_BASE
         
@@ -44,30 +46,17 @@ The installation instructions were taken from
         cd $ROUGE_BASE/../../../pyrouge_python/
         python -m pyrouge.test
 
----
+    If it's successful, then the last lines of the out put should be something like this:
+    
+        2020-07-28 22:51:19,808 [MainThread  ] [INFO ]  Processing D30005.M.100.T.G.
+        2020-07-28 22:51:19,808 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmplz7avgeu/model.
+        2020-07-28 22:51:19,809 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp2dy_c27f/rouge_conf.xml
+        2020-07-28 22:51:19,809 [MainThread  ] [INFO ]  Running ROUGE with command /home/bryan/Desktop/pyrouge_combined/pyrouge_workers/tools/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/bryan/Desktop/pyrouge_combined/pyrouge_workers/tools/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp2dy_c27f/rouge_conf.xml
+        ../tmp/tmprmkmdxy5/config_test.xml data/config_test.xml
+        ...
+        ----------------------------------------------------------------------
+        Ran 11 tests in 2.397s
+        
+        OK
+        
 
-This repository contains code for the ACL 2017 paper *[Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/abs/1704.04368)*. 
-
-## Looking for test set output?
-The test set output of the models described in the paper can be found [here](https://drive.google.com/file/d/0B7pQmm-OfDv7MEtMVU5sOHc5LTg/view?usp=sharing).
-
-## Looking for pretrained model?
-A pretrained model is available here:
-* [Version for Tensorflow 1.0](https://drive.google.com/file/d/0B7pQmm-OfDv7SHFadHR4RllfR1E/view?usp=sharing)
-* [Version for Tensorflow 1.2.1](https://drive.google.com/file/d/0B7pQmm-OfDv7ZUhHZm9ZWEZidDg/view?usp=sharing)
-
-(The only difference between these two is the naming of some of the variables in the checkpoint. Tensorflow 1.0 uses `lstm_cell/biases` and `lstm_cell/weights` whereas Tensorflow 1.2.1 uses `lstm_cell/bias` and `lstm_cell/kernel`).
-
-## Looking for CNN / Daily Mail data?
-Instructions are [here](https://github.com/abisee/cnn-dailymail).
-
-## About this code
-This code is based on the [TextSum code](https://github.com/tensorflow/models/tree/master/textsum) from Google Brain.
-
-This code was developed for Tensorflow 0.12, but has been updated to run with Tensorflow 1.0.
-In particular, the code in attention_decoder.py is based on [tf.contrib.legacy_seq2seq_attention_decoder](https://www.tensorflow.org/api_docs/python/tf/contrib/legacy_seq2seq/attention_decoder), which is now outdated.
-Tensorflow 1.0's [new seq2seq library](https://www.tensorflow.org/api_guides/python/contrib.seq2seq#Attention) probably provides a way to do this (as well as beam search) more elegantly and efficiently in the future.
-
-## How to run
-
-### Get the dataset
