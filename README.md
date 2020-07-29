@@ -2,7 +2,7 @@
 
 This repository contains the two components you need to use pyrouge in to score text summaries by using Python.
 
-It's verified to work in Ubuntu 20.04 LTS running Python 3.7.
+It's verified to work on Ubuntu 20.04 LTS with Python 3.7.
 
 It combines two previous repositories:
 * The ROUGE-1.5.5 repo from [here](https://github.com/andersjo/pyrouge.git), and
