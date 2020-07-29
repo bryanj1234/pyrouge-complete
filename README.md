@@ -1,5 +1,5 @@
 ## An easier way to install pyrouge
-test
+
 This repository contains the two components you need to use pyrouge in to score text summaries by using Python.
 
 It's verified to work on Ubuntu 20.04 LTS with Python 3.7.
